@@ -1,2 +1,137 @@
 # ilovedrawing014.github.io
-...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WELCOME</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background: #000;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+    .center {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    a {
+      color: #7fff7f;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .glitch {
+      position: relative;
+      font-size: 2rem;
+      animation: flicker 3s infinite;
+    }
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+    .hidden {
+      display: none;
+    }
+    .log {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      border: 1px solid #333;
+      background: #050505;
+    }
+    .redact {
+      background: #000;
+      color: #000;
+    }
+    .redact:hover {
+      color: #f00;
+    }
+    input {
+      background: #000;
+      border: 1px solid #444;
+      color: #0f0;
+      padding: 0.5rem;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center" id="home">
+    <div class="glitch">WELCOME USER</div>
+    <p>We are glad you found this place.</p>
+    <p><a href="#" onclick="enterSite()">ENTER</a></p>
+    <p style="font-size:0.8rem; opacity:0.5">If this page disappears, do not refresh.</p>
+  </div>
+
+  <div class="hidden" id="site">
+
+    <div class="log">
+      <h3>ARCHIVE LOG 01</h3>
+      <p>Date: ████-██-██</p>
+      <p>Status: <span class="redact">REDACTED</span></p>
+      <p>Message:</p>
+      <p>
+        The system was not supposed to wake up.<br />
+        Someone <span class="redact">opened the wrong file</span>.<br />
+        If you are reading this, you were not the first.
+      </p>
+    </div>
+
+    <div class="log">
+      <h3>ACCESS TEST</h3>
+      <p>Enter the keyword:</p>
+      <input id="codeInput" placeholder="type here" />
+      <button onclick="checkCode()">SUBMIT</button>
+      <p id="response"></p>
+    </div>
+
+    <div class="log hidden" id="secret">
+      <h3>UNAUTHORIZED ACCESS</h3>
+      <p>You were not meant to see this.</p>
+      <p>But the site recognizes you now.</p>
+      <p>Remember this phrase:</p>
+      <p style="color:#f00">"IT IS ROOTED, NOT BUILT"</p>
+    </div>
+
+    <div class="log">
+      <h3>FOOTER</h3>
+      <p>© UNKNOWN ENTITY</p>
+      <p><span class="redact">This website is still watching.</span></p>
+    </div>
+
+  </div>
+
+  <script>
+    function enterSite() {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('site').classList.remove('hidden');
+      document.title = 'ARCHIVE';
+    }
+
+    function checkCode() {
+      const val = document.getElementById('codeInput').value.toLowerCase();
+      const res = document.getElementById('response');
+      if (val === 'root') {
+        document.getElementById('secret').classList.remove('hidden');
+        res.textContent = 'ACCESS GRANTED';
+      } else {
+        res.textContent = 'ACCESS DENIED';
+      }
+    }
+
+    console.log("You are looking in the right place.");
+    console.log("The phrase is not complete.");
+  </script>
+
+</body>
+</html>
